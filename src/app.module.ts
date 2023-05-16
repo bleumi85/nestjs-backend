@@ -5,9 +5,11 @@ import { ConfigModule } from './config';
 import { MikroORM } from '@mikro-orm/core';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { AccountSeeder } from './seeders/AccountSeeder';
+import { AuthModule } from './api/auth/auth.module';
+import { AccountsModule } from './api/accounts/accounts.module';
 
 @Module({
-    imports: [ConfigModule, MikroOrmModule.forRoot()],
+    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule],
     controllers: [AppController],
     providers: [AppService],
 })
