@@ -5,6 +5,7 @@ import { Account } from '../../accounts/entities';
 import { SeasonRepository } from '../seasons.repository';
 import { Payment } from '../../payments/entities';
 import { SeasonPlace } from '../season-places/entities';
+import { SeasonGameday } from '../../seasons-gamedays/entities';
 
 @Entity({tableName: 'seasons', customRepository: () => SeasonRepository })
 export class Season extends PrimaryEntity {
@@ -30,4 +31,7 @@ export class Season extends PrimaryEntity {
 
     @OneToMany(() => SeasonPlace, sp => sp.season)
     season_places = new Collection<SeasonPlace>(this);
+
+    @OneToMany(() => SeasonGameday, sg => sg.season)
+    season_gamedays = new Collection<SeasonGameday>(this);
 }
