@@ -8,9 +8,10 @@ import { AccountSeeder } from './seeders/AccountSeeder';
 import { AuthModule } from './api/auth/auth.module';
 import { AccountsModule } from './api/accounts/accounts.module';
 import { SeasonsModule } from './api/seasons/seasons.module';
+import { PaymentsModule } from './api/payments/payments.module';
 
 @Module({
-    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule, SeasonsModule],
+    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule, SeasonsModule, PaymentsModule],
     controllers: [AppController],
     providers: [AppService],
 })
