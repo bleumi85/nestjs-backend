@@ -45,4 +45,13 @@ export class RefreshToken extends PrimaryEntity {
     get isActive(): boolean {
         return !this.revoked && !this.isExpired;
     }
+
+    constructor(account: Account, token: string, createdByIp: string) {
+        super();
+        this.account = account;
+        this.token = token;
+        this.expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+        this.createdByIp = createdByIp;
+        this.created = new Date();
+    }
 }

@@ -2,6 +2,7 @@ import {
     Cascade,
     Collection,
     Entity,
+    EntityRepositoryType,
     Enum,
     OneToMany,
     Property,
@@ -12,15 +13,18 @@ import { IsEmail } from 'class-validator';
 import { DateEntity } from '../../../common/entities';
 import { Role } from '../accounts.interface';
 import { RefreshToken } from '../../refresh-tokens/entities';
+import { AccountRepository } from '../accounts.repository';
 
 const roles = Object.values(Role);
 
-@Entity({ tableName: 'accounts' })
+@Entity({ tableName: 'accounts', customRepository: () => AccountRepository })
 @Unique({
     properties: ['firstName', 'lastName'],
     name: 'accounts_full_name_unique',
 })
 export class Account extends DateEntity {
+    [EntityRepositoryType]?: AccountRepository;
+
     @Property()
     @ApiProperty()
     firstName: string;
