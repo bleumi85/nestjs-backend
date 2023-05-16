@@ -7,9 +7,10 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { AccountSeeder } from './seeders/AccountSeeder';
 import { AuthModule } from './api/auth/auth.module';
 import { AccountsModule } from './api/accounts/accounts.module';
+import { SeasonsModule } from './api/seasons/seasons.module';
 
 @Module({
-    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule],
+    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule, SeasonsModule],
     controllers: [AppController],
     providers: [AppService],
 })
