@@ -1,4 +1,6 @@
-export interface Accounts {}
+export interface Accounts {
+    id: string;
+}
 
 export enum Role {
     ADMIN = 'Admin',
