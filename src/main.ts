@@ -3,6 +3,7 @@ import { Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { NODE_ENV } from './common/constants';
+import { setupSwagger } from './utils';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -13,6 +14,7 @@ async function bootstrap() {
 
     if (CURRENT_NODE_ENV === NODE_ENV.DEVELOPMENT) {
         Logger.log('Setup', 'Swagger');
+        setupSwagger(app);
     }
 
     await app.listen(PORT, () => {
