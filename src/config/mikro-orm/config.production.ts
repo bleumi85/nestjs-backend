@@ -12,4 +12,7 @@ export default defineConfig({
     driverOptions: {
         connection: { ssl: true },
     },
+    cache: {
+        enabled: false,
+    },
 });
