@@ -30,8 +30,8 @@ export class Season extends PrimaryEntity {
     payments = new Collection<Payment>(this);
 
     @OneToMany(() => SeasonPlace, sp => sp.season)
-    season_places = new Collection<SeasonPlace>(this);
+    seasonPlaces = new Collection<SeasonPlace>(this);
 
     @OneToMany(() => SeasonGameday, sg => sg.season)
-    season_gamedays = new Collection<SeasonGameday>(this);
+    seasonGamedays = new Collection<SeasonGameday>(this);
 }

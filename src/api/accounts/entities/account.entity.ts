@@ -17,6 +17,7 @@ import { RefreshToken } from '../../refresh-tokens/entities';
 import { AccountRepository } from '../accounts.repository';
 import { Season } from '../../seasons/entities/season.entity';
 import { Payment } from '../../payments/entities';
+import { Bet } from '../../bets/entities';
 
 const roles = Object.values(Role);
 
@@ -92,4 +93,7 @@ export class Account extends DateEntity {
 
     @OneToMany(() => Payment, p => p.account, { cascade: [Cascade.REMOVE]})
     payments = new Collection<Payment>(this);
+
+    @OneToMany(() => Bet, b => b.account)
+    bets = new Collection<Bet>(this);
 }
