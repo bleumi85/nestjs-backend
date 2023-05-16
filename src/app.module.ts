@@ -9,9 +9,10 @@ import { AuthModule } from './api/auth/auth.module';
 import { AccountsModule } from './api/accounts/accounts.module';
 import { SeasonsModule } from './api/seasons/seasons.module';
 import { PaymentsModule } from './api/payments/payments.module';
+import { GamedaysModule } from './api/gamedays/gamedays.module';
 
 @Module({
-    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule, SeasonsModule, PaymentsModule],
+    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule, SeasonsModule, PaymentsModule, GamedaysModule],
     controllers: [AppController],
     providers: [AppService],
 })
