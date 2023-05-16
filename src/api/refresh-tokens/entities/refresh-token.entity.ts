@@ -1,6 +1,6 @@
-import { Entity, ManyToOne, Property } from "@mikro-orm/core";
-import { Account } from "src/api/accounts/entities";
-import { PrimaryEntity } from "src/common/entities";
+import { Entity, ManyToOne, Property } from '@mikro-orm/core';
+import { Account } from '../../accounts/entities';
+import { PrimaryEntity } from '../../../common/entities';
 
 @Entity({ tableName: 'refresh_tokens' })
 export class RefreshToken extends PrimaryEntity {
@@ -10,7 +10,7 @@ export class RefreshToken extends PrimaryEntity {
     @Property()
     token: string;
 
-    @Property({ type: 'datetime'})
+    @Property({ type: 'datetime' })
     expires: Date;
 
     @Property({ type: 'datetime' })

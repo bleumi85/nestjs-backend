@@ -1,14 +1,25 @@
-import { Cascade, Collection, Entity, Enum, OneToMany, Property, Unique } from '@mikro-orm/core';
+import {
+    Cascade,
+    Collection,
+    Entity,
+    Enum,
+    OneToMany,
+    Property,
+    Unique,
+} from '@mikro-orm/core';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail } from 'class-validator';
-import { DateEntity } from 'src/common/entities';
+import { DateEntity } from '../../../common/entities';
 import { Role } from '../accounts.interface';
-import { RefreshToken } from 'src/api/refresh-tokens/entities';
+import { RefreshToken } from '../../refresh-tokens/entities';
 
 const roles = Object.values(Role);
 
 @Entity({ tableName: 'accounts' })
-@Unique({ properties: ['firstName', 'lastName'], name: 'accounts_full_name_unique' })
+@Unique({
+    properties: ['firstName', 'lastName'],
+    name: 'accounts_full_name_unique',
+})
 export class Account extends DateEntity {
     @Property()
     @ApiProperty()
@@ -63,6 +74,9 @@ export class Account extends DateEntity {
         return !!(this.verified || this.passwordReset);
     }
 
-    @OneToMany(() => RefreshToken, rt => rt.account, { hidden: true, cascade: [Cascade.REMOVE] })
+    @OneToMany(() => RefreshToken, (rt) => rt.account, {
+        hidden: true,
+        cascade: [Cascade.REMOVE],
+    })
     refreshTokens = new Collection<RefreshToken>(this);
 }

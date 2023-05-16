@@ -1,5 +1,5 @@
-import { defineConfig } from "@mikro-orm/postgresql";
-import config from "./config";
+import { defineConfig } from '@mikro-orm/postgresql';
+import config from './config';
 
 export default defineConfig({
     ...config,
