@@ -4,6 +4,7 @@ import {
     Entity,
     EntityRepositoryType,
     Enum,
+    ManyToMany,
     OneToMany,
     Property,
     Unique,
@@ -14,6 +15,7 @@ import { DateEntity } from '../../../common/entities';
 import { Role } from '../accounts.interface';
 import { RefreshToken } from '../../refresh-tokens/entities';
 import { AccountRepository } from '../accounts.repository';
+import { Season } from '../../seasons/entities/season.entity';
 
 const roles = Object.values(Role);
 
@@ -83,4 +85,7 @@ export class Account extends DateEntity {
         cascade: [Cascade.REMOVE],
     })
     refreshTokens = new Collection<RefreshToken>(this);
+
+    @ManyToMany(() => Season)
+    seasons = new Collection<Season>(this);
 }

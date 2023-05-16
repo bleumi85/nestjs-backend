@@ -17,7 +17,7 @@ export class AccountsController {
     constructor(private readonly accountsService: AccountsService) {}
 
     @Get()
-    @Roles(Role.USER)
+    @Roles(Role.ADMIN)
     @ApiResponse({
         status: HttpStatus.OK,
         description: 'All accounts',
