@@ -5,8 +5,8 @@ import { Season } from '../../seasons/entities';
 import { Gameday } from '../../gamedays/entities';
 import { Bet } from '../../bets/entities';
 
-@Entity({ tableName: 'seasons_gamedays'})
-@Unique({ properties: ['season', 'gameday'], name: 'seasons_gamedays_always_unique'})
+@Entity({ tableName: 'seasons_gamedays' })
+@Unique({ properties: ['season', 'gameday'], name: 'seasons_gamedays_always_unique' })
 export class SeasonGameday extends PrimaryEntity {
     @ManyToOne(() => Season)
     season: Season;
@@ -14,11 +14,11 @@ export class SeasonGameday extends PrimaryEntity {
     @ManyToOne(() => Gameday)
     gameday: Gameday;
 
-    @Property({ type: 'date'})
+    @Property({ type: 'date', nullable: true })
     @ApiProperty()
     dateStart: Date;
 
-    @Property({type: 'date'})
+    @Property({ type: 'date', nullable: true })
     @ApiProperty()
     dateEnd: Date;
 
