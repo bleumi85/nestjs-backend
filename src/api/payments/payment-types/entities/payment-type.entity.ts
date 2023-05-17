@@ -3,9 +3,8 @@ import { PrimaryEntity } from '../../../../common/entities';
 import { ApiProperty } from '@nestjs/swagger';
 import { Payment } from '../../entities';
 
-@Entity({ tableName: 'payment_types'})
+@Entity({ tableName: 'payment_types' })
 export class PaymentType extends PrimaryEntity {
-
     @Property()
     @Unique()
     @ApiProperty()
@@ -19,6 +18,6 @@ export class PaymentType extends PrimaryEntity {
     @ApiProperty()
     textNegative: string;
 
-    @OneToMany(() => Payment, p => p.paymentType)
+    @OneToMany(() => Payment, (p) => p.paymentType)
     payments = new Collection<Payment>(this);
 }

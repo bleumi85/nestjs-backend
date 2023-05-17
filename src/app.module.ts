@@ -14,7 +14,17 @@ import { SeasonsGamedaysModule } from './api/seasons-gamedays/seasons-gamedays.m
 import { BetsModule } from './api/bets/bets.module';
 
 @Module({
-    imports: [ConfigModule, MikroOrmModule.forRoot(), AuthModule, AccountsModule, SeasonsModule, PaymentsModule, GamedaysModule, SeasonsGamedaysModule, BetsModule],
+    imports: [
+        ConfigModule,
+        MikroOrmModule.forRoot(),
+        AuthModule,
+        AccountsModule,
+        SeasonsModule,
+        PaymentsModule,
+        GamedaysModule,
+        SeasonsGamedaysModule,
+        BetsModule,
+    ],
     controllers: [AppController],
     providers: [AppService],
 })

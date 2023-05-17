@@ -4,8 +4,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { SeasonGameday } from '../../seasons-gamedays/entities';
 import { Account } from '../../accounts/entities';
 
-@Entity({tableName: 'bets'})
-@Unique({properties: ['seasonGameday', 'account']})
+@Entity({ tableName: 'bets' })
+@Unique({ properties: ['seasonGameday', 'account'] })
 export class Bet extends PrimaryEntity {
     @Property()
     @ApiProperty()

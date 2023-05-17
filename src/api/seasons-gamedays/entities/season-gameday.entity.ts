@@ -22,6 +22,6 @@ export class SeasonGameday extends PrimaryEntity {
     @ApiProperty()
     dateEnd: Date;
 
-    @OneToMany(() => Bet, b => b.seasonGameday)
+    @OneToMany(() => Bet, (b) => b.seasonGameday)
     bets = new Collection<Bet>(this);
 }

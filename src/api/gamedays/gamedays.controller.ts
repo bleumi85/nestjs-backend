@@ -3,5 +3,5 @@ import { GamedaysService } from './gamedays.service';
 
 @Controller('gamedays')
 export class GamedaysController {
-  constructor(private readonly gamedaysService: GamedaysService) {}
+    constructor(private readonly gamedaysService: GamedaysService) {}
 }

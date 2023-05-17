@@ -11,30 +11,30 @@ const name = 'seasons';
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 export class SeasonsController {
-  constructor(private readonly seasonsService: SeasonsService) {}
+    constructor(private readonly seasonsService: SeasonsService) {}
 
-  @Post()
-  async create(@Body() createSeasonDto: CreateSeasonDto) {
-    return await this.seasonsService.create(createSeasonDto);
-  }
+    @Post()
+    async create(@Body() createSeasonDto: CreateSeasonDto) {
+        return await this.seasonsService.create(createSeasonDto);
+    }
 
-  @Get()
-  async findAll() {
-    return await this.seasonsService.findAll();
-  }
+    @Get()
+    async findAll() {
+        return await this.seasonsService.findAll();
+    }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return await this.seasonsService.findOne(id);
-  }
+    @Get(':id')
+    async findOne(@Param('id') id: string) {
+        return await this.seasonsService.findOne(id);
+    }
 
-  @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateSeasonDto: UpdateSeasonDto) {
-    return await this.seasonsService.update(id, updateSeasonDto);
-  }
+    @Patch(':id')
+    async update(@Param('id') id: string, @Body() updateSeasonDto: UpdateSeasonDto) {
+        return await this.seasonsService.update(id, updateSeasonDto);
+    }
 
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return await this.seasonsService.remove(id);
-  }
+    @Delete(':id')
+    async remove(@Param('id') id: string) {
+        return await this.seasonsService.remove(id);
+    }
 }

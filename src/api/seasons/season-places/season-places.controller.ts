@@ -3,5 +3,5 @@ import { SeasonPlacesService } from './season-places.service';
 
 @Controller('season-places')
 export class SeasonPlacesController {
-  constructor(private readonly seasonPlacesService: SeasonPlacesService) {}
+    constructor(private readonly seasonPlacesService: SeasonPlacesService) {}
 }

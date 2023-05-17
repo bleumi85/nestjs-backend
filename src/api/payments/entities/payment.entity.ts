@@ -1,13 +1,13 @@
-import { DecimalType, Entity, ManyToOne, Property, Unique } from '@mikro-orm/core';
+import { DecimalType, Entity, ManyToOne, Property } from '@mikro-orm/core';
 import { PrimaryEntity } from '../../../common/entities';
 import { ApiProperty } from '@nestjs/swagger';
 import { Account } from '../../accounts/entities';
 import { PaymentType } from '../payment-types/entities';
 import { Season } from '../../seasons/entities';
 
-@Entity({ tableName: 'payments'})
+@Entity({ tableName: 'payments' })
 export class Payment extends PrimaryEntity {
-    @Property({ type: 'date'})
+    @Property({ type: 'date' })
     @ApiProperty()
     booked: Date;
 

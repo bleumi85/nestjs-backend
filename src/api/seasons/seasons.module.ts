@@ -6,8 +6,8 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { SeasonPlacesModule } from './season-places/season-places.module';
 
 @Module({
-  controllers: [SeasonsController],
-  providers: [SeasonsService],
-  imports: [MikroOrmModule.forFeature([Season]), SeasonPlacesModule],
+    controllers: [SeasonsController],
+    providers: [SeasonsService],
+    imports: [MikroOrmModule.forFeature([Season]), SeasonPlacesModule],
 })
-export class SeasonsModule { }
+export class SeasonsModule {}

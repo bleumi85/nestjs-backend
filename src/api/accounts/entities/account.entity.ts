@@ -91,9 +91,9 @@ export class Account extends DateEntity {
     @ManyToMany(() => Season)
     seasons = new Collection<Season>(this);
 
-    @OneToMany(() => Payment, p => p.account, { cascade: [Cascade.REMOVE]})
+    @OneToMany(() => Payment, (p) => p.account, { cascade: [Cascade.REMOVE] })
     payments = new Collection<Payment>(this);
 
-    @OneToMany(() => Bet, b => b.account)
+    @OneToMany(() => Bet, (b) => b.account)
     bets = new Collection<Bet>(this);
 }

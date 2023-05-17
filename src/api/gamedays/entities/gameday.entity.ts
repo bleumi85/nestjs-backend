@@ -15,6 +15,6 @@ export class Gameday extends PrimaryEntity {
     @ApiProperty()
     orderNumber: number;
 
-    @OneToMany(() => SeasonGameday, sg => sg.gameday)
+    @OneToMany(() => SeasonGameday, (sg) => sg.gameday)
     season_gamedays = new Collection<SeasonGameday>(this);
 }

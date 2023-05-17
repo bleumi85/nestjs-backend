@@ -24,15 +24,15 @@ async function bootstrap() {
             } else if (whiteList.indexOf(origin) !== -1) {
                 corsLogger.log(`WhiteList: ${origin}`);
                 callback(null, true);
-            } else if (regexList.some(regex => regex.test(origin))) {
+            } else if (regexList.some((regex) => regex.test(origin))) {
                 corsLogger.log(`RegexList: ${origin}`);
                 callback(null, true);
             } else {
                 corsLogger.warn('Not allowed');
                 callback(new Error(`Origin ${origin} not allowed by CORS`));
             }
-        }
-    })
+        },
+    });
 
     app.use(cookieParser());
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }));

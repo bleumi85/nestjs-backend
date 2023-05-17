@@ -4,9 +4,7 @@ import { CreateSeasonDto, UpdateSeasonDto } from './dto';
 
 @Injectable()
 export class SeasonsService {
-    constructor(
-        private readonly seasonRepo: SeasonRepository,
-    ) {}
+    constructor(private readonly seasonRepo: SeasonRepository) {}
 
     async create(createSeasonDto: CreateSeasonDto) {
         return 'This action adds a new season';
@@ -26,5 +24,5 @@ export class SeasonsService {
 
     remove(id: string) {
         return `This action removes a #${id} season`;
-      }
+    }
 }
