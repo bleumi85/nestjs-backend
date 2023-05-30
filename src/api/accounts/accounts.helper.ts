@@ -15,6 +15,7 @@ export class AccountsHelper {
             email: account.email,
             role: account.role,
             isVerified: account.isVerified,
+            expirationDate: account.expirationDate,
         };
 
         return {

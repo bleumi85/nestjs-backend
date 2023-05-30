@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { SeasonsService } from './seasons.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt/jwt.guard';
@@ -23,9 +23,24 @@ export class SeasonsController {
         return await this.seasonsService.findAll();
     }
 
-    @Get(':id')
-    async findOne(@Param('id') id: string) {
-        return await this.seasonsService.findOne(id);
+    @Get(':yearOrId')
+    async findOne(@Param('yearOrId') yearOrId: string) {
+        return await this.seasonsService.findOne(yearOrId);
+    }
+
+    @Get(':yearOrId/accounts')
+    async findOneWithAccounts(@Param('yearOrId') yearOrId: string) {
+        return await this.seasonsService.findOneWithAccounts(yearOrId);
+    }
+
+    @Get(':yearOrId/gamedays')
+    async findOneWithGamedays(@Param('yearOrId') yearOrId: string) {
+        return await this.seasonsService.findOneWithGamedays(yearOrId);
+    }
+
+    @Get(':yearOrId/places')
+    async findOneWithPlaces(@Param('yearOrId') yearOrId: string) {
+        return await this.seasonsService.findOneWithPlaces(yearOrId);
     }
 
     @Patch(':id')

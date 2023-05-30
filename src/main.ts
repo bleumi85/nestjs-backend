@@ -8,7 +8,9 @@ import * as cookieParser from 'cookie-parser';
 
 var whiteList = [];
 
-var regexList = [];
+var regexList = [
+    /localhost:\d+$/,
+];
 
 const corsLogger = new Logger('CORS');
 

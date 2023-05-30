@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { LoginDto } from './dto';
+import { ForgotPasswordDto, LoginDto } from './dto';
 import { AccountRepository } from '../accounts/accounts.repository';
 import { AccountsHelper } from '../accounts/accounts.helper';
 import { AuthHelper } from './auth.helper';
@@ -12,7 +12,7 @@ export class AuthService {
         private readonly accountRepo: AccountRepository,
         private readonly authHelper: AuthHelper,
         private readonly em: EntityManager,
-    ) {}
+    ) { }
 
     public async login(body: LoginDto, ipAddress: string) {
         const { email, password } = body;
@@ -36,5 +36,20 @@ export class AuthService {
             jwtToken,
             refreshToken: refreshToken.token,
         };
+    }
+
+    public async forgotPassword(body: ForgotPasswordDto, origin: string) {
+        const { email } = body;
+        const account = await this.accountRepo.findOne({ email });
+
+        // always return ok response to prevent email enumeration
+        if (!account) return;
+
+        account.resetToken = this.authHelper.randomTokenString();
+        account.resetTokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+        await this.em.persistAndFlush(account);
+
+        // send email
     }
 }

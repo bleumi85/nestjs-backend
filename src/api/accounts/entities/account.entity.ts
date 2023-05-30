@@ -76,7 +76,7 @@ export class Account extends DateEntity {
     @Property({ nullable: true })
     passwordReset: Date;
 
-    @Property({ persist: false, hidden: true })
+    @Property({ persist: false })
     @ApiProperty({ type: Boolean })
     get isVerified() {
         return !!(this.verified || this.passwordReset);
@@ -88,7 +88,7 @@ export class Account extends DateEntity {
     })
     refreshTokens = new Collection<RefreshToken>(this);
 
-    @ManyToMany(() => Season)
+    @ManyToMany(() => Season, 'accounts', { owner: true, orderBy: { 'year': 'DESC' } })
     seasons = new Collection<Season>(this);
 
     @OneToMany(() => Payment, (p) => p.account, { cascade: [Cascade.REMOVE] })

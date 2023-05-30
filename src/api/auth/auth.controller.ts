@@ -1,22 +1,32 @@
-import { Body, Controller, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Headers, HttpCode, HttpStatus, Post, Req, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CookieOptions, Request, Response } from 'express';
 import { AuthService } from './auth.service';
-import { LoginDto } from './dto';
+import { ForgotPasswordDto, LoginDto } from './dto';
 
 const name = 'auth';
 
 @Controller(name)
 @ApiTags(name)
 export class AuthController {
-    constructor(private readonly authService: AuthService) {}
+    constructor(private readonly authService: AuthService) { }
 
     @Post('login')
+    @HttpCode(HttpStatus.OK)
     async login(@Body() loginDto: LoginDto, @Req() req: Request, @Res() res: Response) {
         const ipAddress: string = req.ip;
         const { refreshToken, ...result } = await this.authService.login(loginDto, ipAddress);
         this.setTokenCookie(res, refreshToken);
         return res.json(result);
+    }
+
+    @Post('forgot-password')
+    @HttpCode(HttpStatus.OK)
+    async forgotPassword(@Body() forgotPasswordDto: ForgotPasswordDto, @Headers('origin') origin: string) {
+        await this.authService.forgotPassword(forgotPasswordDto, origin);
+        return {
+            message: 'Please check your email for password reset instructions'
+        }
     }
 
     // helper function
