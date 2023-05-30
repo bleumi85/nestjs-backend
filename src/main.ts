@@ -20,7 +20,7 @@ const corsLogger = new Logger('CORS');
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
-    app.enableCors({
+    /*app.enableCors({
         credentials: true,
         origin: (origin, callback) => {
             if (origin === undefined) {
@@ -37,7 +37,7 @@ async function bootstrap() {
                 callback(new Error(`Origin ${origin} not allowed by CORS`));
             }
         },
-    });
+    });*/
 
     app.use(cookieParser());
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }));

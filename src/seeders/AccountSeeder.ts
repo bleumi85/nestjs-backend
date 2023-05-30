@@ -15,7 +15,7 @@ export class AccountSeeder extends Seeder {
                 firstName: 'Admin',
                 lastName: 'Api',
                 userName: 'admin',
-                email: 'admin@diebleumers.de',
+                email: 'admin@graftipp.online',
                 role: Role.ADMIN,
                 passwordHash: await bcrypt.hash('Abcd!2345', 10),
                 verified: new Date(Date.UTC(2000, 0, 1)),
