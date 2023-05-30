@@ -6,10 +6,13 @@ import { NODE_ENV } from './common/constants';
 import { setupSwagger } from './utils';
 import * as cookieParser from 'cookie-parser';
 
-var whiteList = [];
+var whiteList = [
+    'https://graftipp.online',
+];
 
 var regexList = [
     /localhost:\d+$/,
+    /\d{3}\.\d{3}\.\d{3}\.\d{3}:\d{4}$/,
 ];
 
 const corsLogger = new Logger('CORS');
